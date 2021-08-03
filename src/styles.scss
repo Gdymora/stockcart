@@ -1,1 +1,693 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    box-sizing: border-box;
+  }
+  
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    background-color: rgb(219, 208, 208);
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  body * + * {
+    margin-top: 1.5em;
+  }
+  
+  .row {
+    margin-left: -0.75em;
+    margin-right: -0.75em;
+  }
+  
+  .row::after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  
+  [class*="column-"] {
+    float: left;
+    padding: 0 0.75em;
+    margin-top: 0;
+  }
+  
+  .column-1 {
+    width: 8.3333%;
+  }
+  .column-2 {
+    width: 16.6667%;
+  }
+  .column-3 {
+    width: 25%;
+  }
+  .column-4 {
+    width: 33.3333%;
+  }
+  .column-5 {
+    width: 41.6667%;
+  }
+  .column-6 {
+    width: 50%;
+  }
+  .column-7 {
+    width: 58.3333%;
+  }
+  .column-8 {
+    width: 66.6667%;
+  }
+  .column-9 {
+    width: 75%;
+  }
+  .column-10 {
+    width: 83.3333%;
+  }
+  .column-11 {
+    width: 91.6667%;
+  }
+  .column-12 {
+    width: 100%;
+  }
+  
+  header {
+    padding: 1em 1.5em;
+    color: #fff;
+    background-color: #0072b0;
+    /*   border-radius: 0.5em; */
+    margin-bottom: -1.5em;
+  }
+  .navbar {
+    width: 100%;
+  }
+  
+  .navbar li {
+    list-style-type: none;
+    display: inline-block;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 3px 5px;
+  }
+  .main {
+    padding: 0 1.5em 1.5em;
+    background-color: #fff;
+    border-radius: 0.5em;
+  }
+  
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  .media {
+    padding: 1.5em;
+    background-color: #eee;
+    border-radius: 0.5em;
+  }
+  
+  .media-image {
+    float: left;
+    margin-right: 1.5em;
+  }
+  
+  .media-body {
+    overflow: auto;
+    margin-top: 0;
+  }
+  
+  .media-body h4 {
+    margin-top: 0;
+  }
+  
+  .clearfix::before,
+  .clearfix::after {
+    display: table;
+    content: " ";
+  }
+  .clearfix::after {
+    clear: both;
+  }
+  /*card GOODS Flex items*/
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .list-item {
+    display: flex;
+    padding: 0.5em;
+    width: 100%;
+  }
+  .list-item:hover {
+    box-shadow: 0 10px 30px #000;
+    z-index: 2;
+  }
+  .list-item:hover:after {
+    transform: scale(1.1);
+  }
+  @media all and (min-width: 40em) {
+    .list-item {
+      width: 50%;
+    }
+  }
+  @media all and (min-width: 60em) {
+    .list-item {
+      width: 33.33%;
+    }
+  }
+  .list-content {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    width: 100%;
+  }
+  .list-content p {
+    flex: 1 0 auto;
+  }
+  .price {
+    color: #d32f2f;
+    font-size: 18px;
+  }
+  
+  .status {
+    font-size: 10px;
+    margin: 0, 4px;
+  }
+  
+  .list-item button {
+    border: none;
+    outline: 0;
+    padding: 10px;
+    color: #fff;
+    background-color: #f44336;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .container {
+    position: relative;
+    width: 100%;
+  }
+  .container .button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: rgba(205, 214, 219, 0.3);
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .container .btn:hover {
+    background: rgba(139, 144, 146, 0.3);
+  }
+  
+  .product-view-description__status {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #3bb878;
+  }
+  
+  .not {
+    color: #f44336;
+  }
+  
+  .promo {
+    background: #ccc;
+    padding: 3px;
+  }
+  /*------------------*/
+  /* Add a black background color to the top navigation */
+  .topnav {
+    margin-top: 1em;
+    overflow: hidden;
+  }
+  
+  /* Full-width input fields */
+  .form-card input,  
+  .form-card select,
+  .form-card textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  .form-card input:focus,
+  .form-card select:focus,
+  .form-card textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /*search input*/
+  .search-replacement {
+    width: 10em;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 8px 20px 8px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  .search-filter {
+    width: 10em;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 8px 20px 8px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  /* When the input field gets focus, change its width to 100% */
+  .search-replacement:focus {
+    width: 15em;
+  }
+  /*------------*/
+  /* On mouse-over */
+  .btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .btn:hover {
+    background: #eee;
+  }
+  
+  .success {
+    color: green;
+  }
+  .info {
+    color: dodgerblue;
+  }
+  .warning {
+    color: orange;
+  }
+  .danger {
+    color: red;
+  }
+  .default {
+    color: black;
+  }
+  
+  /*****/
+  
+  .bg-success {
+    background-color: #4caf50;
+  } /* Green */
+  .bg-success:hover {
+    background-color: #46a049;
+  }
+  
+  .bg-info {
+    background-color: #2196f3;
+  } /* Blue */
+  .bg-info:hover {
+    background: #0b7dda;
+  }
+  
+  .bg-warning {
+    background-color: #ff9800;
+  } /* Orange */
+  .bg-warning:hover {
+    background: #e68a00;
+  }
+  
+  .bg-danger {
+    background-color: #f44336;
+  } /* Red */
+  .bg-danger:hover {
+    background: #da190b;
+  }
+  
+  .bg-default {
+    background-color: #a79d9d;
+    color: black;
+  } /* Gray */
+  .bg-default:hover {
+    background: #ddd;
+  }
+  /**/
+  .img-push img {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px; /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+  }
+  
+  /* Add a hover effect (blue shadow) */
+  .img-push img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
+  /*ФОРМА ПОШУКУ*/
+  
+  .min-toggle {
+    left: 70px;
+  }
+  .max-toggle {
+    left: 165px;
+  }
+  .price-controls input {
+    width: 80px;
+    padding: 8px 10px;
+    margin-left: 10px;
+    border: none;
+    background: #34495e;
+    font-size: 16px;
+    font-family: "Tahoma", sans-serif;
+    text-align: center;
+    color: #283136;
+    border-radius: 5px;
+    color: white;
+  }
+  .price-controls input:first-child {
+    margin-right: 14px;
+  }
+  
+  .price-controls select {
+    padding: 8px 10px;
+    border: none;
+    background: #34495e;
+    font-size: 16px;
+    font-family: "Tahoma", sans-serif;
+    text-align: center;
+    color: #283136;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .search input {
+    min-width: 100%;
+    padding: 8px 10px;
+    border: none;
+    background: #34495e;
+    font-size: 16px;
+    font-family: "Tahoma", sans-serif;
+    text-align: center;
+    color: #283136;
+    border-radius: 5px;
+    color: white;
+  }
+  .search ::placeholder {
+    color: white;
+    font-size: 1em;
+  }
+  /*------------------*/
+  /* The Modal (background) */
+  .modal {
+    margin-top: 0;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /*FLEX*/
+  .parent {
+    width: 600px;
+    background-color: yellow;
+    text-align: right;
+  }
+  .flex {
+    display: flex;
+  }
+  
+  .flex-horizontal-center {
+    justify-content: center;
+  }
+  
+  .flex-horizontal-left {
+    justify-content: start;
+  }
+  .flex-horizontal-right {
+    justify-content: end;
+  }
+  
+  .flex-vertical-center {
+    align-items: center;
+  }
+  
+  .flex-vertical-top {
+    align-items: flex-start;
+  }
+  .flex-vertical-bottom {
+    align-items: flex-end;
+  }
+  
+  .flex-center {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .flex-space-between {
+    justify-content: space-between;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .text-center {
+    text-align: center;
+  }
+  /*///////////*/
+  /* Style the table */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style table headers and table data */
+  th,
+  td {
+    text-align: center;
+    padding: 8px;
+  }
+  
+  th:first-child,
+  td:first-child {
+    text-align: left;
+  }
+  
+  /* Zebra-striped table rows */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .fa-check {
+    color: green;
+  }
+  
+  .fa-remove {
+    color: red;
+  }
+  .order p {
+    color: maroon; /* Цвет текста */
+    font-weight: 600; /* Жирное начертание */
+  }
+  
+  /*MENU*/
+  
+  @media (min-width: 30em) {
+    .page-header {
+      padding: 2rem 2rem 3rem;
+    }
+  }
+  
+  @media (min-width: 30em) {
+    .main-nav {
+      position: fixed;
+      left: 0;
+      top: 8.25rem;
+      z-index: 10;
+      background-color: transparent;
+      transition: background-color 0.5s linear;
+      border-top-right-radius: 0.5em;
+      border-bottom-right-radius: 0.5em;
+    }
+  
+    .main-nav:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  
+  .nav-links {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    list-style: none;
+    justify-content: space-between;
+  }
+  .nav-links > li + li {
+    margin-left: 0.8em;
+  }
+  .nav-links > li > a {
+    display: block;
+    padding: 0.8em 0;
+    color: white;
+    font-size: 0.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .nav-links__icon {
+    height: 1.5em;
+    width: 1.5em;
+    vertical-align: -0.2em;
+  }
+  .nav-links > li > a:hover {
+    color: hsl(40, 100%, 70%);
+  }
+  
+  @media (min-width: 30em) {
+    .nav-links {
+      display: block;
+      padding: 1em;
+      margin-bottom: 0;
+    }
+    .nav-links > li + li {
+      margin-left: 0;
+    }
+  
+    .nav-links__label {
+      display: inline-block;
+      margin-left: 1em;
+      padding-right: 1em;
+      opacity: 0;
+      transform: translate(-1em);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3), opacity 0.4s linear;
+    }
+    .nav-links:hover .nav-links__label,
+    .nav-links a:focus > .nav-links__label {
+      opacity: 1;
+      transform: translate(0);
+    }
+    .nav-links > li:nth-child(2) .nav-links__label {
+      transition-delay: 0.1s;
+    }
+    .nav-links > li:nth-child(3) .nav-links__label {
+      transition-delay: 0.2s;
+    }
+    .nav-links > li:nth-child(4) .nav-links__label {
+      transition-delay: 0.3s;
+    }
+    .nav-links > li:nth-child(5) .nav-links__label {
+      transition-delay: 0.4s;
+    }
+  
+    .nav-links__icon {
+      transition: transform 0.2s ease-out;
+    }
+  
+    .nav-links a:hover > .nav-links__icon,
+    .nav-links a:focus > .nav-links__icon {
+      transform: scale(1.3);
+    }
+  }
+  /*-------------------------------*/
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    margin-top: 0;
+    background-color: inherit;
+    float: right;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  /*------------------*/
+  

@@ -1,0 +1,7 @@
+<span>Форма входа</span>
+<form [formGroup]="form" (ngSubmit)="login()" class="form-card">
+    <input type="email" placeholder="Email" formControlName="email">
+    <input type="password" placeholder="Password" formControlName="password">
+</form>
+
+<button (click)="login()" class="btn default">Увійти</button>
