@@ -22,9 +22,9 @@ export class AuthService {
 
   private setToken(response: any) {
     if (response) {
-      const expData = new Date(new Date().getTime() + +response.expiresIn * 1000)
+      const expData = new Date(new Date().getTime() + +response.expires_in * 1000)
       localStorage.setItem('fb-token-exp', expData.toString())
-      localStorage.setItem('fb-token', response.idToken)
+      localStorage.setItem('fb-token', response.access_token)
     } else {
       localStorage.clear()
     }
@@ -33,6 +33,8 @@ export class AuthService {
 
   get token() {
     const expDate = new Date(localStorage.getItem('fb-token-exp') || '{}')
+   /*  console.log('exp', expDate)
+    console.log('date', new Date) */
     if (new Date > expDate) {
       this.logout()
       return null

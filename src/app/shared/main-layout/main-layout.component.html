@@ -1,35 +1,10 @@
-<body>
-    <div class="container">
-        <header class="flex flex-space-between">
-            <div>
-                <div class="flex-space-between">
-                    <h1>
-                        <a routerLink="/">HENDLEX</a>
-                    </h1>
-                    <div>
-                        <p>нано технології водовідштовхування</p>
-                    </div>
-                </div>
-            </div>
-            <div class="navbar flex flex-vertical-bottom">
-                <ul>
-                    <li class="navitem">
-                        <a href="#">Головна</a>
-                    </li>
-                    <li class="navitem">
-                        <a href="#">Категорії</a>
-                    </li>
-                    <li class="navitem">
-                        <a href="#">Контакти</a>
-                    </li>
-                    <li class="navitem" routerLinkActive="active">
-                        <a [routerLink]="['/admin', 'login']">Login</a>
-                    </li>
-
-                </ul>
-            </div>
-        </header>
-
-        <main class="main clearfix">
-
-        </main>
+<mat-toolbar color="primary">
+     <span [routerLink]="['/']">Coffee</span>
+    <span class="example-spacer"></span>   
+    <button mat-icon-button class="example-icon" [routerLink]="['/admin', 'dashboard']" [routerLinkActive]="['active']">
+        <mat-icon>dashboard</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" [routerLink]="['/admin', 'login']" [routerLinkActive]="['active']">
+        <mat-icon>account_box</mat-icon>
+    </button>
+</mat-toolbar>
