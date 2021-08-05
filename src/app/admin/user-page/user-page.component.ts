@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { Users } from 'src/app/shared/interfaces';
+import { Role, Users } from 'src/app/shared/interfaces';
 import { UserRoleService } from 'src/app/shared/services/user-role.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserRoleService } from 'src/app/shared/services/user-role.service';
 })
 export class UserPageComponent implements OnInit {
 
-  constructor(private usersServis: UserRoleService) { }
+  constructor(public usersServis: UserRoleService) { }
   users: any = []
   user: Users
   pSub$: Subscription
@@ -24,12 +24,8 @@ export class UserPageComponent implements OnInit {
     "fio": "Тестовый пользователь"
   }
   ngOnInit(): void {
-
-    this.pSub$ = this.usersServis.getAll().subscribe((users: Users[]) => {
-      this.users = users
-      console.log(this.users)
-    },
-      error => { console.log(error) })
+ console.log(this.usersServis.getAll())
+ console.log(this.usersServis.user)
     /*  this.pSub$ = this.usersServis.createUser(this.testUser).subscribe((req) => {
        console.log(req)
      }) */
@@ -38,9 +34,11 @@ export class UserPageComponent implements OnInit {
      },
        error => { console.log(error) }
      ) */
+  
+
     this.pSub$ = this.usersServis.getUser(this.testUser.id).subscribe((user: Users) => {
       this.user = user
-      console.log(this.user)
+      console.log(user)
     },
       error => { console.log(error) }
     )
@@ -56,5 +54,5 @@ export class UserPageComponent implements OnInit {
       this.cSub$.unsubscribe()
     }
   }
-    displayedColumns: string[] = ['position', 'id', 'role_id', 'fio'];
+  displayedColumns: string[] = ['position', 'id', 'role_id', 'fio'];
 }

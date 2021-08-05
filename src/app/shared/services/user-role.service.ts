@@ -2,19 +2,42 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
-import { catchError, map } from 'rxjs/operators';
-import { Users } from '../interfaces';
-import { Observable, throwError } from 'rxjs';
+import { catchError, map, takeWhile } from 'rxjs/operators';
+import { Role, Users } from '../interfaces';
+import { combineLatest, forkJoin, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserRoleService {
-
+  public user: Users[];
+  public role: any;
   constructor(private http: HttpClient) { }
 
+
   getAll() {
+    forkJoin(
+      [this.getUserAll(),
+      this.getRoleAll()],
+    ).subscribe(([User, Role]) => {
+      this.role = Role
+      this.user = User.map((users: Users) => {
+        users.role_name = Role.filter((role: Role) => role.id == users.role_id)
+        return users
+      })
+    });
+    return this.user
+  }
+
+  getUserAll() {
     return this.http.get(`${environment.url}/users`)
+      .pipe(map((res: any) => {
+        return res
+      }))
+  }
+
+  getRoleAll() {
+    return this.http.get(`${environment.url}/role`)
       .pipe(map((res: any) => {
         return res
       }))

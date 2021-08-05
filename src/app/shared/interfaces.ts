@@ -6,10 +6,20 @@ export interface User {
 export interface Users {
     id?: number;
     role_id: number;
+    role_name?: string
     status: number;
     email: string;
     pasword?: string;
     fio: string;
     created?: string;
     updated?: string;
+}
+
+export interface Role {
+    id: number;
+    parent_id: number;
+    name: string;
+    status: number;
+    created: string;
+    updated: string;
 }
