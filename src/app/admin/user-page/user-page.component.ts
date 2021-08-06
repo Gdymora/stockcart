@@ -23,9 +23,13 @@ export class UserPageComponent implements OnInit {
     "password": "654321",
     "fio": "Тестовый пользователь"
   }
+
+  displayedColumns: string[] = ['position', 'name', 'email', 'fio', 'status', 'update'];
+
   ngOnInit(): void {
- console.log(this.usersServis.getAll())
- console.log(this.usersServis.user)
+
+    this.usersServis.getAll()
+
     /*  this.pSub$ = this.usersServis.createUser(this.testUser).subscribe((req) => {
        console.log(req)
      }) */
@@ -34,7 +38,7 @@ export class UserPageComponent implements OnInit {
      },
        error => { console.log(error) }
      ) */
-  
+
 
     this.pSub$ = this.usersServis.getUser(this.testUser.id).subscribe((user: Users) => {
       this.user = user
@@ -54,5 +58,8 @@ export class UserPageComponent implements OnInit {
       this.cSub$.unsubscribe()
     }
   }
-  displayedColumns: string[] = ['position', 'id', 'role_id', 'fio'];
+
+  remove(id: number) {
+    alert(id)
+  }
 }

@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { UserPageComponent } from './user-page/user-page.component';
+import { EditUsersPageComponent } from './edit-users-page/edit-users-page.component';
+import { AddUsersPageComponent } from './add-users-page/add-users-page.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { UserPageComponent } from './user-page/user-page.component';
     LoginPageComponent,
     RegistrationPageComponent,
     UserPageComponent,
+    EditUsersPageComponent,
+    AddUsersPageComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +35,8 @@ import { UserPageComponent } from './user-page/user-page.component';
             { path: 'register', component: RegistrationPageComponent },
             { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
             { path: 'users', component: UserPageComponent, canActivate: [AuthGuard] },
+            { path: 'users/:id/edit', component: EditUsersPageComponent, canActivate: [AuthGuard] },
+            { path: 'users-add', component: AddUsersPageComponent, canActivate: [AuthGuard] },
           ]
         }
       ]),

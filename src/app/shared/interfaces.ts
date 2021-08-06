@@ -16,10 +16,10 @@ export interface Users {
 }
 
 export interface Role {
-    id: number;
-    parent_id: number;
-    name: string;
-    status: number;
-    created: string;
-    updated: string;
+    id?: number;
+    parent_id?: number;
+    name?: string;
+    status?: number;
+    created?: string;
+    updated?: string;
 }

@@ -19,14 +19,19 @@ export class UserRoleService {
     forkJoin(
       [this.getUserAll(),
       this.getRoleAll()],
-    ).subscribe(([User, Role]) => {
+    ).subscribe(([User, Role]) => {     
       this.role = Role
       this.user = User.map((users: Users) => {
-        users.role_name = Role.filter((role: Role) => role.id == users.role_id)
+        users.role_name = Role.filter((role: Role) => role.id == users.role_id).map((role: Role) => role.name)
         return users
       })
     });
+
     return this.user
+  }
+
+  getuserRole(){
+    return this.role
   }
 
   getUserAll() {
@@ -37,15 +42,15 @@ export class UserRoleService {
   }
 
   getRoleAll() {
-    return this.http.get(`${environment.url}/role`)
+    return this.http.get(`${environment.url}/roles`)
       .pipe(map((res: any) => {
         return res
       }))
   }
 
   getUser(id: number) {
-    return this.http.get(`${environment.url}/users/${id}`)
-      .pipe(map((res: any) => {
+    return this.http.get<Users>(`${environment.url}/users/${id}`)
+      .pipe(map((res: Users) => {
         return res
       }))
   }
@@ -61,6 +66,10 @@ export class UserRoleService {
 
   remove(id: string) {
     return this.http.delete(`${environment.url}/users/${id}`)
+  }
+
+  updateRole(user: Users): Observable<Users> {
+    return this.http.put<Users>(`${environment.url}/users/${user.id}`, user)
   }
 
 
