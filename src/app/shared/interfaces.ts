@@ -23,3 +23,23 @@ export interface Role {
     created?: string;
     updated?: string;
 }
+
+export interface Category {
+    id?: number;
+    parent_id: number;
+    name: string;
+    status: number;
+    created: Date;
+    updated: Date;
+}
+
+export interface Position {
+    id?: number;
+    category_id?: number;
+    name?: string;
+    description?: string;
+    article?: string;
+    is_deleted?: number;
+    created?: Date;
+    updated?: Date;
+}
