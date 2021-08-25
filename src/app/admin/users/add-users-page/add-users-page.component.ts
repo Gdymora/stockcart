@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Users } from 'src/app/shared/interfaces';
+import { Role, Users } from 'src/app/shared/interfaces';
 import { UserRoleService } from 'src/app/shared/services/user-role.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class AddUsersPageComponent implements OnInit {
   submitted: boolean = false;
   form: FormGroup
   user: Users
+  roles: Role[]
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,10 @@ export class AddUsersPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   console.log(this.userRoleServis.getRoleAll())
+    this.userRoleServis.getRoleAll()
+     .subscribe(res => {
+     this.roles = res
+    })
   }
 
   onSubmit() {
@@ -52,5 +56,5 @@ export class AddUsersPageComponent implements OnInit {
 
     )
 */
-  } 
+  }
 }

@@ -19,7 +19,7 @@ export class UserRoleService {
     forkJoin(
       [this.getUserAll(),
       this.getRoleAll()],
-    ).subscribe(([User, Role]) => {     
+    ).subscribe(([User, Role]) => {
       this.role = Role
       this.user = User.map((users: Users) => {
         users.role_name = Role.filter((role: Role) => role.id == users.role_id).map((role: Role) => role.name)
