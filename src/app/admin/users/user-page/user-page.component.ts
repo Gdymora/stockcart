@@ -41,7 +41,7 @@ export class UserPageComponent implements OnInit {
 
 
     this.pSub$ = this.usersServis.getUser(this.testUser.id).subscribe((user: Users) => {
-      this.user = user
+      this.user = user['data']
       console.log(user)
     },
       error => { console.log(error) }

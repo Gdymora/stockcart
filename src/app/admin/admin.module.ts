@@ -29,7 +29,8 @@ import { PositionCategoriesPagesComponent } from './categories/position-categori
     AddPositionsPagesComponent,
     EditPositionsPagesComponent,
     EditCategoriesPagesComponent,
-    AddCategoriesPagesComponent
+    AddCategoriesPagesComponent,
+    PositionCategoriesPagesComponent
   ],
   imports: [
     CommonModule,

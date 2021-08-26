@@ -37,6 +37,7 @@ export class UserRoleService {
   getUserAll() {
     return this.http.get(`${environment.url}/users`)
       .pipe(map((res: any) => {
+        console.log(res)
         return res
       }))
   }
@@ -44,14 +45,14 @@ export class UserRoleService {
   getRoleAll() {
     return this.http.get(`${environment.url}/roles`)
       .pipe(map((res: any) => {
-        return res
+        return res.data
       }))
   }
 
   getUser(id: number) {
     return this.http.get<Users>(`${environment.url}/users/${id}`)
       .pipe(map((res: Users) => {
-        return res
+        return res.data
       }))
   }
 

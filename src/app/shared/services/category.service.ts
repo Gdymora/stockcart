@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Category } from '../interfaces';
+import { Categories, Category } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,24 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  
-  getCategoriesAll(): Observable<Category[]>{
-    return this.http.get<Category> (`${environment.url}/positioncategorys`)
-    .pipe(map((res: any) => {
-      return res
-    }))
+
+  getCategoriesAll(): Observable<Categories> {
+    return this.http.get<Categories>(`${environment.url}/positioncategorys`)
+      .pipe(map((res: Categories) => {
+        return res
+      }))
+  }
+
+  getCategoriesPageEvent(size: number, number: number) {
+    return this.http.get<Category>(`${environment.url}/positioncategorys?page.size=${size}&page.number=${number}`)
+      .pipe(map((res: Category) => {
+        return res
+      }))
+  }
+
+  getDataByFilter(value: string): Observable<Category> {
+    return this.http.get<Category>(`${environment.url}/positioncategorys`)
+
   }
 
   getCategories(id: number) {
@@ -39,5 +51,5 @@ export class CategoryService {
   remove(id: string) {
     return this.http.delete(`${environment.url}/users/${id}`)
   }
-  
+
 }

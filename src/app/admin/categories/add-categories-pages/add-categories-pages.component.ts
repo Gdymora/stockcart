@@ -35,12 +35,12 @@ export class AddCategoriesPagesComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
-    /*    console.log(this.form.value)
+       console.log(this.form.value)
         this.catigoriesServices.createCategories(this.form.value)
        .subscribe(res => {
          this.form.reset()
          this.submitted = false
-         this.router.navigate(['/admin', 'dasboard'])
+         this.router.navigate(['/admin', 'dashboard'])
        },
          err => {
            console.log(err.error.message)
@@ -48,6 +48,6 @@ export class AddCategoriesPagesComponent implements OnInit {
          }
    
        )
-     */
+    
   }
 }
