@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Positions, Position } from 'src/app/shared/interfaces';
+import { forkJoin, Subscription } from 'rxjs';
+import { mergeMap, switchMap } from 'rxjs/operators';
+import { Positions, Position, Categories } from 'src/app/shared/interfaces';
+import { CategoryService } from 'src/app/shared/services/category.service';
 import { PositionService } from 'src/app/shared/services/position.service';
 
 @Component({
@@ -18,25 +19,29 @@ export class PositionCategoriesPagesComponent implements OnInit {
   pageSize: number;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   displayedColumns: string[] = ['position', 'category', 'name', 'update'];
-
+  categories: string
   dataSource: MatTableDataSource<Position>;
   pSubIn$: Subscription
   pSub$: Subscription
 
   constructor(private route: ActivatedRoute,
     private positionServices: PositionService,
+    private categoriesServices: CategoryService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.pSubIn$ = this.route.params.pipe(
-      switchMap(params => {
-        return this.positionServices.getCategoriesPageEvent(params['id'], 10, 0)
+      mergeMap(params => {
+        const categories = this.categoriesServices.getCategories(params['id'])
+        const positions = this.positionServices.getCategoriesPageEvent(params['id'], 10, 0)
+        return forkJoin([categories, positions])
       })
-    ).subscribe((position: Positions) => {
+    ).subscribe((position: any) => {
       console.log(position)
-      this.length = position.page.total
-      this.pageSize = position.page.size
-      this.dataSource = new MatTableDataSource(position.data)
+      this.categories = position[0].name
+      this.length = position[1].page.total
+      this.pageSize = position[1].page.size
+      this.dataSource = new MatTableDataSource(position[1].data)
     },
       error => { console.log(error) }
     )

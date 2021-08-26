@@ -11,7 +11,7 @@ import { Position, Positions } from '../interfaces';
 export class PositionService {
 
   constructor(private http: HttpClient) { }
- 
+
   getPositionAll(): Observable<Positions> {
     return this.http.get<Positions>(`${environment.url}/positions`)
       .pipe(map((res: Positions) => {
@@ -20,16 +20,36 @@ export class PositionService {
   }
 
 
-  getCategoriesPageEvent(categoryId:number, size: number, number: number): Observable<Positions> {
-    return this.http.get<Positions>(`${environment.url}/positions?page.size=${size}&page.number=${number}`)
+  getCategoriesPageEvent(categoryId: number, size: number, number: number): Observable<Positions> {
+    return this.http.get<Positions>(`${environment.url}/positions?search.category_id=${categoryId}&page.size=${size}&page.number=${number}`)
       .pipe(map((res: Positions) => {
         return res
       }))
   }
 
-  getDataByFilter(value: string): Observable<Position> {
-    return this.http.get<Position>(`${environment.url}/positioncategorys`)
+  getPositions(id: number) {
+    return this.http.get<Position>(`${environment.url}/positioncategorys/${id}`)
+      .pipe(map((res: Position) => {
+        return res
+      }))
+  }
 
+  getDataByFilter(value: string): Observable<Position> {
+    return this.http.get<Position>(`${environment.url}/positions`)
+
+  }
+
+  createPositions(position: Position): Observable<Position> {
+    return this.http.post<Position>(`${environment.url}/positions`, position)
+
+  }
+
+  updateCategories(position: Position): Observable<Position> {
+    return this.http.put<Position>(`${environment.url}/positions/${position.id}`, position)
+  }
+
+  remove(id: string) {
+    return this.http.delete(`${environment.url}/users/${id}`)
   }
 
 }

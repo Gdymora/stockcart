@@ -17,7 +17,6 @@ export class AddCategoriesPagesComponent implements OnInit {
   form: FormGroup
 
   constructor(
-    private route: ActivatedRoute,
     private catigoriesServices: CategoryService,
     private router: Router,
   ) {
