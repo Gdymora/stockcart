@@ -28,7 +28,7 @@ export class PositionService {
   }
 
   getPositions(id: number) {
-    return this.http.get<Position>(`${environment.url}/positioncategorys/${id}`)
+    return this.http.get<Position>(`${environment.url}/positions/${id}`)
       .pipe(map((res: Position) => {
         return res
       }))
@@ -44,7 +44,7 @@ export class PositionService {
 
   }
 
-  updateCategories(position: Position): Observable<Position> {
+  updatePositions(position: Position): Observable<Position> {
     return this.http.put<Position>(`${environment.url}/positions/${position.id}`, position)
   }
 

@@ -41,5 +41,19 @@ export class EditCategoriesPagesComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
+    console.log(this.form.value)
+    this.catigoriesServices.updateCategories(this.form.value)
+      .subscribe(res => {
+        this.form.reset()
+        this.submitted = false
+        this.router.navigate(['/admin', 'dashboard'])
+      },
+        err => {
+          console.log(err.error.message)
+          console.log(err.error)
+        }
+
+      )
+
   }
 }

@@ -18,7 +18,7 @@ export class PositionCategoriesPagesComponent implements OnInit {
   length: number;
   pageSize: number;
   pageSizeOptions: number[] = [5, 10, 25, 100];
-  displayedColumns: string[] = ['position', 'category', 'name', 'update'];
+  displayedColumns: string[] = ['position', 'article', 'category', 'name', 'description', 'update'];
   categories: string
   dataSource: MatTableDataSource<Position>;
   pSubIn$: Subscription
