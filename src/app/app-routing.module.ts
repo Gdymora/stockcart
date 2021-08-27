@@ -7,12 +7,15 @@ import { MainLayoutComponent } from './shared/main-layout/main-layout.component'
 const routes: Routes = [
   {
     path: '', component: MainLayoutComponent, children: [
-      { path: '', redirectTo: '/', pathMatch: 'full' },     
+      { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '', component: MainPageComponent },
     ]
   },
   {
-    path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+    path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+  },
+  {
+    path: 'dealer', loadChildren: () => import('./dealer/dealer.module').then(m => m.DealerModule)
 
   },
 ];
