@@ -9,7 +9,7 @@ import { Position, Positions } from '../interfaces';
   providedIn: 'root'
 })
 export class PositionService {
-
+  cartPositions: Position[]=[]
   constructor(private http: HttpClient) { }
 
   getPositionAll(): Observable<Positions> {
@@ -50,6 +50,10 @@ export class PositionService {
 
   remove(id: string) {
     return this.http.delete(`${environment.url}/users/${id}`)
+  }
+
+  addPositionCart(position: Position) {
+    this.cartPositions.push(position)
   }
 
 }
