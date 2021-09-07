@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import {  PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Subscription } from 'rxjs';
@@ -14,11 +14,12 @@ import { PositionService } from 'src/app/shared/services/position.service';
   styleUrls: ['./position-categories-pages.component.scss']
 })
 export class PositionCategoriesPagesComponent implements OnInit {
+
   filterValue: any
   length: number;
   pageSize: number;
   pageSizeOptions: number[] = [5, 10, 25, 100];
-  displayedColumns: string[] = ['position', 'article', 'category', 'name', 'description', 'update'];
+  displayedColumns: string[] = ['position', 'article', 'category', 'name', 'description', 'price', 'count', 'update'];
   categories: string
   dataSource: MatTableDataSource<Position>;
   pSubIn$: Subscription
