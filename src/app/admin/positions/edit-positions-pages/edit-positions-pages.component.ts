@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-import { Category, Position } from 'src/app/shared/interfaces';
-import { CategoryService } from 'src/app/shared/services/category.service';
-import { PositionService } from 'src/app/shared/services/position.service';
+import { Component, OnInit } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { ActivatedRoute, Router } from '@angular/router'
+import { forkJoin } from 'rxjs'
+import { mergeMap } from 'rxjs/operators'
+import { Category, Position } from 'src/app/shared/interfaces'
+import { CategoryService } from 'src/app/shared/services/category.service'
+import { PositionService } from 'src/app/shared/services/position.service'
 
 @Component({
   selector: 'app-edit-positions-pages',
@@ -13,10 +13,10 @@ import { PositionService } from 'src/app/shared/services/position.service';
   styleUrls: ['./edit-positions-pages.component.scss'],
 })
 export class EditPositionsPagesComponent implements OnInit {
-  submitted: boolean = false;
-  positions: Position;
-  categories: Category[];
-  form: FormGroup;
+  submitted: boolean = false
+  positions: Position
+  categories: Category[]
+  form: FormGroup
 
   constructor(
     private route: ActivatedRoute,
@@ -29,15 +29,15 @@ export class EditPositionsPagesComponent implements OnInit {
     this.route.params
       .pipe(
         mergeMap((params) => {
-          const categories = this.categoriServices.getCategoriesAll();
-          const positions = this.positionsServices.getPositions(params['id']);
-          return forkJoin([categories, positions]);
+          const categories = this.categoriServices.getCategoriesAll()
+          const positions = this.positionsServices.getPositions(params['id'])
+          return forkJoin([categories, positions])
         })
       )
       .subscribe((position) => {
-        this.positions = position[1];
-        console.log(this.positions);
-        this.categories = position[0]['data'];
+        this.positions = position[1]
+        console.log(this.positions)
+        this.categories = position[0]['data']
 
         this.form = new FormGroup({
           category_id: new FormControl(
@@ -52,17 +52,17 @@ export class EditPositionsPagesComponent implements OnInit {
           ),
           price: new FormControl(this.positions.price),
           count: new FormControl(this.positions.count),
-        });
-      });
+        })
+      })
   }
 
   onSubmit() {
     if (this.form.invalid) {
-      return;
+      return
     }
-    console.log(this.getANewOneIfPropChanged(this.positions, this.form.value));
+    console.log(this.getANewOneIfPropChanged(this.positions, this.form.value))
     if (!this.form.value.price && !this.form.value.count) {
-      console.log(23);
+      console.log(23)
       /*  this.positionsServices
         .updatePositions(this.form.value, this.positions.id)
         .subscribe(
@@ -77,20 +77,20 @@ export class EditPositionsPagesComponent implements OnInit {
           }
         ); */
     } else if (!this.form.value.price) {
-      console.log(13);
+      console.log(13)
     } else if (!this.form.value.count) {
-      console.log(130);
+      console.log(130)
     } else {
     }
   }
 
   getANewOneIfPropChanged(oldForm: any, newForm: any) {
-    let variance = [];
+    let variance = []
     for (let prop in newForm) {
       if (newForm[prop] != oldForm[prop]) {
-        variance.push(prop);
+        variance.push(prop)
       }
     }
-    return variance;
+    return variance
   }
 }

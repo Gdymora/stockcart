@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 * {
   box-sizing: border-box;
@@ -17,20 +17,19 @@
   box-sizing: inherit;
 }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
   color: #333;
 }
 
-
 .row {
   margin-left: -0.75em;
   margin-right: -0.75em;
 }
 .row::after {
-  content: " ";
+  content: ' ';
   display: block;
   clear: both;
 }

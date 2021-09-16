@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Role, Users } from 'src/app/shared/interfaces';
-import { UserRoleService } from 'src/app/shared/services/user-role.service';
+import { Component, OnInit } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { ActivatedRoute, Router } from '@angular/router'
+import { switchMap } from 'rxjs/operators'
+import { Role, Users } from 'src/app/shared/interfaces'
+import { UserRoleService } from 'src/app/shared/services/user-role.service'
 
 @Component({
   selector: 'app-add-users-page',
   templateUrl: './add-users-page.component.html',
-  styleUrls: ['./add-users-page.component.scss']
+  styleUrls: ['./add-users-page.component.scss'],
 })
 export class AddUsersPageComponent implements OnInit {
-
-  submitted: boolean = false;
+  submitted: boolean = false
   form: FormGroup
   user: Users
   roles: Role[]
@@ -20,7 +19,7 @@ export class AddUsersPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public userRoleServis: UserRoleService,
-    private router: Router,
+    private router: Router
   ) {
     this.form = new FormGroup({
       email: new FormControl(null, Validators.required),
@@ -31,9 +30,8 @@ export class AddUsersPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userRoleServis.getRoleAll()
-     .subscribe(res => {
-     this.roles = res
+    this.userRoleServis.getRoleAll().subscribe((res) => {
+      this.roles = res
     })
   }
 
@@ -42,7 +40,7 @@ export class AddUsersPageComponent implements OnInit {
       return
     }
     console.log(this.form.value)
-/*     this.userRoleServis.createUser(this.form.value)
+    /*     this.userRoleServis.createUser(this.form.value)
 
     ).subscribe(res => {
       this.form.reset()
